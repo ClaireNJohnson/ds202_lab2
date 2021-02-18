@@ -1,0 +1,60 @@
+---
+title: "individual1.Rmd"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/master/hwlabs/data/choco.csv") 
+```
+
+```{r}
+ord <- order(choco$Rating, decreasing=TRUE)
+```
+
+```{r}
+choco2 <- subset(choco, Rating == 4)
+```
+
+```{r}
+plot(choco$Cocoa_Percent, choco$Rating, xlab='Cocoa Percent', ylab= 'Rating')
+```
+
+```{r}
+ord2 <- order(choco2$Location)
+```
+
+```{r}
+x <- c(4,5,1,13,2,3,17,1,1,4,1,1,3,6,4,36)
+labels <- c('Australia', 'Belgium', 'Brazil', 'Canada', 'Denmark', 'Ecuador', 'France', 'Germany', 'Guatemala', 'Italy', 'Madagascar', 'Scotland', 'Spain', 'Switzerland', 'U.K.', 'U.S.A')
+pie(x, labels, main = 'Countries with Chocolate with a Rating of 4')
+```
+```{r}
+ord3 <- order(choco$Location)
+```
+
+```{r}
+x <- c(53,59,24,161,31,57,175,42,10,73,17,10,36,43,126, 817)
+labels <- c('Australia', 'Belgium', 'Brazil', 'Canada', 'Denmark', 'Ecuador', 'France', 'Germany', 'Guatemala', 'Italy', 'Madagascar', 'Scotland', 'Spain', 'Switzerland', 'U.K.', 'U.S.A')
+pie(x, labels, main = 'Same Countries but from the Whole Dataset')
+```
+
+```{r}
+plot(choco$Date, choco$Rating)
+```
+
+
+``````{r}
+hist(choco2$Date)
+```
+
+``````{r}
+hist(choco$Rating)
+```
+``````{r}
+boxplot(choco$Rating)
+```

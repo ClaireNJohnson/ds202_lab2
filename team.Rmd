@@ -1,0 +1,50 @@
+---
+title: "team.Rmd"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/master/hwlabs/data/choco.csv") 
+```
+
+
+**How are the ratings distributed? Create both a histogram and a boxplot and describe them. Don’t forget to mention outliers, if there are any.**
+
+```{r}
+ hist(choco$Rating, xlab = 'Rating', main = 'Frequency of Ratings')
+```
+
+This histogram is bimodal and left skewed. There are outliers on the left side. The most common ratings are around 2.75 and 3.5.
+
+``````{r}
+boxplot(choco$Rating, ylab = 'Rating', main = 'Boxplot of Ratings')
+```
+
+This boxplot shows a small variance in the data.There are outliers in the lower values.
+
+
+**How does the number of ratings depend on the location of the company? Draw a bar chart of the number of reports.**
+
+``````{r}
+barplot(table(choco$Location), xlab='Location', ylab='Number of Ratings', main='Number of Ratings per Country', cex.names=.5)
+```
+
+**Do ratings depend on the cacao percentage of a chocolate bar? Create both numerical and graphical summaries, and explain. [Hint: Think about why the scatterplot is not a very good choice for visualization here.]**
+
+``````{r}
+boxplot(Rating ~ Cocoa_Percent, data = choco)
+summary(Rating ~ Cocoa_Percent, data = choco)
+```
+
+**How do different bean origins compare in terms of the flavor of chocolates? Are beans from some places better than the other? Create both numerical and graphical summaries, and explain.**
+
+``````{r}
+
+```
+
+**Brainstorm two analyses you would like to perform (with your teammates). Describe in plain language what comparisons are you making. Create suitable numerical and graphical summaries for your analyses. Describe the results.**
+
+``````{r}
+
+```

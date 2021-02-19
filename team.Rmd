@@ -40,11 +40,28 @@ summary(Rating ~ Cocoa_Percent, data = choco)
 **How do different bean origins compare in terms of the flavor of chocolates? Are beans from some places better than the other? Create both numerical and graphical summaries, and explain.**
 
 ``````{r}
-
+boxplot(Rating ~ Location, data = choco)
 ```
+``````{r}
+summary(choco$Rating)
+summary(choco$Location)
+```
+
 
 **Brainstorm two analyses you would like to perform (with your teammates). Describe in plain language what comparisons are you making. Create suitable numerical and graphical summaries for your analyses. Describe the results.**
 
 ``````{r}
+maxRating <- choco[choco$Rating == 4, ]
+maxRatingOrigins <- unique(maxRating$Bean_Origin)
+
+
+barplot(table(maxRating$Bean_Origin), 
+        ylab = "Frequency",
+        ylim = c(0, 20),
+        las = 2)
+title(main = "Bean Origin Frequency in Highest Rated Chocolates")
 
 ```
+<br />
+<br />
+We can see from the graph above that the chocolates with beans that originate in Venuzuela have the greatest chance of receiving a high rating.  

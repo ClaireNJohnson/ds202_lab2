@@ -5,7 +5,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/master/hwlabs/data/choco.csv") 
+choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/master/hwlabs/data/choco.csv")
 ```
 
 
@@ -27,30 +27,28 @@ This boxplot shows a small variance in the data.There are outliers in the lower 
 **How does the number of ratings depend on the location of the company? Draw a bar chart of the number of reports.**
 
 ``````{r}
-barplot(table(choco$Location), xlab='Location', ylab='Number of Ratings', main='Number of Ratings per Country', cex.names=.5)
+barplot(table(choco$Location), xlab='Location', ylab='Number of Ratings', main='Number of Ratings per Country', cex.names=.5, las=2, ylim=c(0,1000))
 ```
+
+Most of the chocolate bars are from the U.S.A..
 
 **Do ratings depend on the cacao percentage of a chocolate bar? Create both numerical and graphical summaries, and explain. [Hint: Think about why the scatterplot is not a very good choice for visualization here.]**
 
 ``````{r}
 boxplot(Rating ~ Cocoa_Percent, data = choco)
-summary(Rating ~ Cocoa_Percent, data = choco)
+table(choco$Rating, choco$Cocoa_Percent)
 ```
+
+The cocoa percent does not largely affect the rating.
 
 **How do different bean origins compare in terms of the flavor of chocolates? Are beans from some places better than the other? Create both numerical and graphical summaries, and explain.**
 
 ``````{r}
-boxplot(Rating ~ Location, data = choco)
+boxplot(Rating ~ Location, data = choco, cex.names=.5, las=2)
+table(choco$Rating, choco$Bean_Origin)
 ```
-<br />
-<br />
-We can see on this box plot that there is not a correlation between the location and the rating of the chocolates.  
 
-
-``````{r}
-summary(choco$Rating)
-summary(choco$Location)
-```
+A lot of well rated chocolates have bean origins of Venezuala and Vietnam.
 
 
 **Brainstorm two analyses you would like to perform (with your teammates). Describe in plain language what comparisons are you making. Create suitable numerical and graphical summaries for your analyses. Describe the results.**
@@ -60,7 +58,7 @@ maxRating <- choco[choco$Rating == 4, ]
 maxRatingOrigins <- unique(maxRating$Bean_Origin)
 
 
-barplot(table(maxRating$Bean_Origin), 
+barplot(table(maxRating$Bean_Origin),
         ylab = "Frequency",
         ylim = c(0, 20),
         las = 2)
@@ -70,3 +68,11 @@ title(main = "Bean Origin Frequency in Highest Rated Chocolates")
 <br />
 <br />
 We can see from the graph above that the chocolates with beans that originate in Venuzuela have the greatest chance of receiving a high rating.  
+
+
+``````{r}
+hist(maxRating$Date, xlab='Year', main='Frequency of Years for Highest Rated Chocolate')
+table(maxRating$Date)
+```
+
+Most of the highest rated chocolate are from 2011.

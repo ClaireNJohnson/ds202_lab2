@@ -42,6 +42,11 @@ summary(Rating ~ Cocoa_Percent, data = choco)
 ``````{r}
 boxplot(Rating ~ Location, data = choco)
 ```
+<br />
+<br />
+We can see on this box plot that there is not a correlation between the location and the rating of the chocolates.  
+
+
 ``````{r}
 summary(choco$Rating)
 summary(choco$Location)
